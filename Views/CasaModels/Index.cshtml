@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ClaseCasa.Models.CasaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Agregar una Nueva Casa</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCasa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NodeRejas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TieneJardin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TienePorche)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TienePiscina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCasa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NodeRejas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieneJardin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienePorche)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienePiscina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                <a asp-action="Cuartos" asp-route-id="@item.IdCasa">Cuartos</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdCasa">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCasa">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCasa">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

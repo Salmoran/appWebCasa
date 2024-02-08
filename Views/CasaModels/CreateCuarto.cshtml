@@ -1,0 +1,59 @@
+﻿@using ClaseCasa.Models
+@model ClaseCasa.Models.CuartoModel
+
+@{
+    ViewData["Title"] = "Create Cuarto";
+}
+
+<h1>Agregar un Nuevo Cuarto</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCuarto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="IdCasa" class="form-control" value='@ViewData["idCasa"]'/>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="IdTipoCuarto">IdTipoCuarto</label>
+                <select asp-for="IdTipoCuarto" class="form-control" asp-items="new SelectList(ViewBag.TipoCuarto,nameof(TipoCuartoModel.IdTipoCuarto),nameof(TipoCuartoModel.Descripcion))" required>
+                    <option value="">Seleccione un Tipo de Cuarto...</option>
+                </select>
+                <span asp-validation-for="IdTipoCuarto" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input type="color" asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="WcPropio" /> @Html.DisplayNameFor(model => model.WcPropio)
+                </label>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Medida" class="control-label"></label>
+                <input asp-for="Medida" type="number" class="form-control" step="0.1" required />
+                <span asp-validation-for="Medida" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Cuartos" asp-route-id="@Model?.IdCasa">>Cuartos</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

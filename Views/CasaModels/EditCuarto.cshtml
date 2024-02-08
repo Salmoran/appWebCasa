@@ -1,0 +1,62 @@
+﻿@using ClaseCasa.Models
+@model ClaseCasa.Models.CuartoModel
+
+@{
+    ViewData["Title"] = "Edit-Cuarto";
+}
+
+<h1>Editar Cuarto</h1>
+
+<h4>CuartoModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCuarto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCuarto" />
+            <div class="form-group">
+                <input asp-for="IdCasa" type="hidden" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="IdTipoCuarto">IdTipoCuarto</label>
+                <select asp-for="IdTipoCuarto" class="form-control" asp-items="new SelectList(ViewBag.TipoCuarto,nameof(TipoCuartoModel.IdTipoCuarto),nameof(TipoCuartoModel.Descripcion), Model.IdTipoCuarto)" required>
+                    <option value="">Sleccione un Tipo de Cuarto...</option>
+                </select>
+                <span asp-validation-for="IdTipoCuarto" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input type="color" asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="WcPropio" /> @Html.DisplayNameFor(model => model.WcPropio)
+                </label>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Medida" class="control-label"></label>
+                <input asp-for="Medida" class="form-control" required />
+                <span asp-validation-for="Medida" type="number" step="0.1" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Cuartos" asp-route-id="@Model?.IdCasa">Cuartos</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

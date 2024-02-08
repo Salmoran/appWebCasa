@@ -1,0 +1,64 @@
+﻿@model ClaseCasa.Models.CasaModel
+
+@{
+    ViewData["Title"] = "CUARTOS DE LA CASA";
+}
+
+<h1>Cuartos</h1>
+<p>
+    <a asp-action="CreateCuarto" asp-route-id="@Model.IdCasa">Agregar Nuevo Cuarto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuartos[0].IdCuarto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuartos[0].IdCasa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuartos[0].IdTipoCuarto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuartos[0].Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuartos[0].WcPropio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuartos[0].Medida)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cuartos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCuarto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCasa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTipoCuarto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WcPropio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medida)
+                </td>
+                <td>
+                    <a asp-action="EditCuarto" asp-route-id="@item.IdCuarto">Editar</a> |
+                    <a asp-action="DeleteCuarto" asp-route-id="@item.IdCuarto">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

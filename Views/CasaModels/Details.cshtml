@@ -1,0 +1,103 @@
+﻿@model ClaseCasa.Models.CasaModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CasaModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NodeRejas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NodeRejas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TieneJardin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TieneJardin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TienePorche)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TienePorche)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TienePiscina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TienePiscina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+    </dl>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuartos[0].IdCuarto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuartos[0].IdCasa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuartos[0].IdCuarto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuartos[0].Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuartos[0].WcPropio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuartos[0].Medida)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cuartos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCuarto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCasa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdTipoCuarto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WcPropio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Medida)
+                    </td>
+                    <td>
+                        <a asp-action="EditCuarto" asp-route-id="@item.IdCuarto">Editar</a> |
+                        <a asp-action="DeleteCuarto" asp-route-id="@item.IdCuarto">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="CreateCuarto" asp-route-id="@Model?.IdCasa">Agregar Nuevo Cuarto</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.IdCasa">Editar Casa</a> |
+    <a asp-action="Index">Lista de Casas</a>
+</div>
